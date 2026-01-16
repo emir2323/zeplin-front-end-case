@@ -2,7 +2,7 @@ import { Header } from "@/components/layout/header";
 import { MagazineCard } from "@/components/magazine-card";
 import { ArticleCard } from "@/components/article-card";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight, Download } from "lucide-react";
 
 export default function Home() {
   return (
