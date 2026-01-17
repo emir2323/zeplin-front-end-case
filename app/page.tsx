@@ -1,94 +1,122 @@
+"use client";
+
 import { Header } from "@/components/layout/header";
 import { MagazineCard } from "@/components/magazine-card";
 import { ArticleCard } from "@/components/article-card";
+import { CallForPapers } from "@/components/call-for-papers";
+import { Footer } from "@/components/footer";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ChevronLeft, ChevronRight, Download } from "lucide-react";
+import { ArrowRight, ArrowLeft, ChevronLeft, ChevronRight, Download, Calendar, BookOpen, Eye } from "lucide-react";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-gray-50 pb-20">
+    <main className="min-h-screen bg-gray-50">
       <Header />
 
       {/* Hero Section */}
-      <section className="relative bg-[#001542] text-white overflow-hidden">
-        {/* Background pattern overlay (optional) */}
-        <div className="absolute inset-x-0 top-0 h-full opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] pointer-events-none"></div>
+      <section className="relative bg-[#1a237e] text-white overflow-visible pb-20 md:pb-0 z-0">
+        {/* Background Image / Texture */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/hero-bg.png"
+            alt="World Map Texture"
+            className="w-full h-full object-cover opacity-80 mix-blend-screen"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#1a237e] via-[#1a237e]/90 to-transparent opacity-90 mix-blend-multiply"></div>
+        </div>
 
-        <div className="container mx-auto px-4 py-12 md:py-20 flex flex-col md:flex-row items-center gap-10">
-          {/* Left Content */}
-          <div className="flex-1 space-y-6 z-10">
-            <h1 className="text-3xl md:text-5xl font-bold leading-tight">
-              Profuture Teknoloji Dergisi <br />
-              <span className="text-[#A5E05E]">Son Sayı Yayında</span>
-            </h1>
-            <p className="text-gray-300 max-w-lg leading-relaxed">
-              Profuture Teknoloji Dergisi; akademisyenleri, araştırmacıları ve profesyonelleri bir araya getiren bağımsız, uluslararası hakemli bir dergidir.
-            </p>
+        <div className="container mx-auto px-4 pt-12 md:pt-20 relative z-10">
+          <div className="flex flex-col-reverse lg:grid lg:grid-cols-2 gap-8 items-center">
+            {/* Left Content */}
+            <div className="space-y-6 pt-10 pb-10 md:pb-32 relative z-10">
+              <h1 className="text-3xl lg:text-5xl font-bold leading-tight">
+                Profuture Teknoloji Dergisi <br />
+                <span className="text-white">Son Sayı Yayında</span>
+              </h1>
+              <p className="text-gray-300 max-w-lg leading-relaxed">
+                Profuture teknoloji mekanizmaları değişikliği alanlarında özgün akademik çalışmalar içeren yeni sayıya şimdi erişin.
+              </p>
 
-            <div className="flex items-center gap-6 text-sm text-gray-400">
-              <span className="flex items-center gap-1">Cilt: 2</span>
-              <span className="flex items-center gap-1">Sayı: 1</span>
-              <span className="flex items-center gap-1">Haziran 2023</span>
+              <div className="flex items-center gap-6 text-sm text-gray-400">
+                <span className="flex items-center gap-1"><Calendar size={16} />Cilt: 2</span>
+                <span className="flex items-center gap-1"><BookOpen size={16} />Sayı: 7</span>
+                <span className="flex items-center gap-1">Haziran 2025</span>
+              </div>
+
+              <Button className="bg-[#1E3A8A] hover:bg-[#1E40AF] text-white rounded-full px-8 py-6 text-base shadow-lg hover:shadow-xl transition-all">
+                Dergiyi Görüntüle <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
             </div>
 
-            <Button className="bg-[#273D80] hover:bg-[#344e9e] text-white rounded-full px-8 py-6 text-base shadow-lg hover:shadow-xl transition-all">
-              Dergi Görüntüle <ArrowRight className="ml-2 w-5 h-5" />
-            </Button>
-          </div>
-
-          {/* Right Content - 3D Magazine Placeholder */}
-          <div className="flex-1 flex justify-center md:justify-end z-10 relative">
-            <div className="relative w-64 h-80 md:w-80 md:h-[400px] bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg shadow-2xl skew-y-6 transform rotate-6 flex items-center justify-center group hover:skew-y-0 hover:rotate-0 transition-all duration-500">
-              <div className="text-center p-4">
-                <div className="w-20 h-20 bg-white/20 rounded-full mx-auto mb-4 flex items-center justify-center">
-                  <span className="text-4xl font-bold">P</span>
-                </div>
-                <h3 className="font-bold text-xl">Profuture</h3>
-                <p className="text-sm opacity-80 mt-2">Teknoloji ve Dijital</p>
+            {/* Right Content - 3D Magazine Image */}
+            <div className="relative flex justify-center md:justify-end z-20 pointer-events-none">
+              {/* 
+                   Negative margin increased significantly to overlap the next section.
+                   Added rotation and scaling to match the screenshot "floating" look.
+                */}
+              <div className="relative w-full max-w-2xl transform md:translate-y-40 md:-mb-80 md:rotate-[-12deg] transition-transform duration-500">
+                <img
+                  src="/hero-magazine-3d.png"
+                  alt="Profuture Dergisi Son Sayı"
+                  className="w-full h-auto drop-shadow-[0_35px_35px_rgba(0,0,0,0.5)]"
+                />
               </div>
-              {/* Decorative Elements */}
-              <div className="absolute -top-10 -right-10 w-20 h-20 bg-[#A5E05E] rounded-full blur-2xl opacity-20 animate-pulse"></div>
-              <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-[#D93D75] rounded-full blur-3xl opacity-20"></div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Purpose Section */}
-      <section className="container mx-auto px-4 py-12">
-        <div className="max-w-4xl">
-          <span className="text-sm text-gray-500 font-semibold uppercase tracking-wider">Dergi Amacı ve Kapsamı</span>
-          <h2 className="text-2xl md:text-3xl font-bold text-[#001542] mt-2 mb-4">Profuture Teknoloji Dergisi</h2>
-          <p className="text-gray-600 leading-relaxed mb-6">
-            Profuture Teknoloji Dergisi; 2022 yılında yayın hayatına başlayan, teknoloji, inovasyon, dijital dönüşüm ve geleceğin üretim modelleri alanlarında özgün, bilimsel ve mühendislik verileri olanlarını bir araya getiren, uluslararası hakemli ve açık erişimli bir akademik yayındır.
-          </p>
-          <Button variant="outline" className="rounded-full border-gray-300 text-gray-600 hover:text-primary hover:border-primary">
-            Detay <ArrowRight className="ml-2 w-4 h-4" />
-          </Button>
+      <section className="container mx-auto px-4 py-12 md:py-24 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+          {/* Text Content - Left Aligned to avoid overlapping the magazine on the right */}
+          <div className="space-y-6">
+            <span className="text-sm text-slate-500 font-semibold uppercase tracking-wider block">Dergi Amacı ve Kapsamı</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900">Profuture Teknoloji Dergisi</h2>
+            <p className="text-slate-600 leading-relaxed text-lg">
+              Profuture Teknoloji Dergisi, 2022 yılında yayın hayatına başlayan; teknoloji, inovasyon, dijital dönüşüm ve geleceğin üretim modelleri ekseninde sosyal bilimler ile mühendislik ve fen bilimlerini bir araya getiren, uluslararası hakemli ve açık erişimli bir akademik yayındır.
+            </p>
+            <Button variant="outline" className="rounded-full border-gray-300 text-slate-600 hover:text-brand-primary hover:border-brand-primary px-8 py-2">
+              Detay <ArrowRight className="ml-2 w-4 h-4" />
+            </Button>
+          </div>
+
+          {/* Empty Right Column - Reserved for the overlapping magazine */}
+          <div className="hidden md:block"></div>
         </div>
       </section>
 
       {/* Magazines List */}
       <section className="container mx-auto px-4 py-8">
-        <div className="flex items-center justify-between mb-6">
-          <div>
-            <span className="text-sm text-gray-500">Sayılar</span>
-            <h2 className="text-2xl font-bold text-[#001542]">Dergiler</h2>
+        <div className="flex items-center justify-between mb-8">
+          <div className="flex items-center gap-6">
+            <div>
+              <span className="text-xs text-slate-500 font-medium uppercase tracking-wider">Sayılar</span>
+              <h2 className="text-4xl font-bold text-slate-900">Dergiler</h2>
+            </div>
+            <div className="flex gap-3">
+              <button className="w-12 h-12 rounded-[18px] bg-[#E8EDF5] flex items-center justify-center text-[#94A3B8] transition-all cursor-default opacity-80">
+                <ArrowLeft size={20} strokeWidth={2.5} />
+              </button>
+              <button className="w-12 h-12 rounded-[18px] bg-[#EEF2FF] flex items-center justify-center text-[#0F172A] hover:bg-blue-100 transition-all">
+                <ArrowRight size={20} strokeWidth={2.5} />
+              </button>
+            </div>
           </div>
           <div className="flex gap-2">
-            <button className="w-8 h-8 rounded-full border flex items-center justify-center hover:bg-gray-100"><ChevronLeft size={16} /></button>
-            <button className="w-8 h-8 rounded-full border flex items-center justify-center hover:bg-gray-100"><ChevronRight size={16} /></button>
-            <Button variant="ghost" className="text-xs text-gray-500">Tümünü Görüntüle <ArrowRight size={14} className="ml-1" /></Button>
-          </div>
+            <button className="border border-gray-300 rounded-full px-5 py-2 text-xs md:text-sm font-medium text-slate-600 hover:bg-gray-50 hover:text-brand-primary transition-all flex items-center gap-2">
+              Tümünü Görüntüle
+              <ArrowRight size={16} />
+            </button>          </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 justify-items-center">
           <MagazineCard
             title="Teknoloji ve Dijital Dergisi"
             volume={1}
             issue={1}
             date="Aralık 2022"
-            coverImage="https://images.unsplash.com/photo-1627398242454-45a1465c2b39?auto=format&fit=crop&q=80&w=600"
+            coverImage="/magazine-cover-full.jpg"
             isNew={true}
           />
           <MagazineCard
@@ -96,99 +124,84 @@ export default function Home() {
             volume={1}
             issue={1}
             date="Aralık 2022"
-            coverImage="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=600"
+            coverImage="/magazine-cover-full.jpg"
+            isNew={true}
           />
           <MagazineCard
             title="Teknoloji ve Dijital Dergisi"
             volume={1}
             issue={1}
             date="Aralık 2022"
-            coverImage="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=600"
+            coverImage="/magazine-cover-full.jpg"
+            isNew={true}
+            isLatest={true}
           />
         </div>
       </section>
 
-      {/* Banner */}
-      <section className="container mx-auto px-4 py-12">
-        <div className="relative rounded-2xl overflow-hidden bg-gradient-to-r from-blue-100 to-sky-50 p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 h-full md:h-[300px]">
-          {/* Visuals - Abstract Cards */}
-          <div className="hidden md:block absolute left-10 top-1/2 -translate-y-1/2 w-64 h-full opacity-80">
-            <div className="absolute top-10 left-0 w-32 h-40 bg-white shadow-lg rounded-lg -rotate-12 transform border border-blue-200"></div>
-            <div className="absolute top-4 left-16 w-32 h-40 bg-white shadow-lg rounded-lg rotate-6 transform z-10 border border-blue-200"></div>
-          </div>
-
-          <div className="flex-1 md:ml-64 text-center md:text-left z-10">
-            <div className="flex items-center justify-center md:justify-start gap-2 text-red-500 font-bold mb-2">
-              <span className="w-2 h-2 rounded-full bg-red-500"></span>
-              <span className="uppercase text-xs tracking-widest">Makale Çağrısı</span>
-            </div>
-            <h3 className="text-2xl md:text-3xl font-bold text-[#001542] mb-4">Türkiye Ulusal Dijital Veri ve Altyapıları</h3>
-            <p className="text-gray-600 text-sm max-w-lg mb-6 mx-auto md:mx-0">
-              Bu özel sayımızda ulusal ölçekli dijital verilerin kullanımı, korunması ve açık kaynak stratejileri ele alınıyor.
-            </p>
-            <Button className="bg-red-600 hover:bg-red-700 text-white rounded-full px-8">
-              Makale Gönder <ArrowRight size={16} className="ml-2" />
-            </Button>
-          </div>
-
-          {/* Right Image */}
-          <div className="relative w-full md:w-1/3 h-48 md:h-full rounded-xl overflow-hidden shadow-lg">
-            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=600" alt="Banner" className="w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#001542]/80 to-transparent flex flex-col justify-end p-6 text-white">
-              <span className="text-xs opacity-80">Bilgi ve Teknoloji</span>
-              <span className="font-bold">Araştırmaları</span>
-            </div>
-          </div>
-        </div>
-      </section>
+      <CallForPapers />
 
       {/* Recent Articles */}
+      {/* Recent Articles */}
       <section className="container mx-auto px-4 py-8">
-        <div className="flex items-center justify-between mb-6">
-          <div>
-            <span className="text-sm text-gray-500">Profuture Teknoloji Dergisi</span>
-            <h2 className="text-2xl font-bold text-red-600">Güncel Yazılar</h2>
-          </div>
-          <Button variant="ghost" className="text-xs text-gray-500">Tümünü Görüntüle <ArrowRight size={14} className="ml-1" /></Button>
-        </div>
-
-        <div className="flex flex-col lg:flex-row gap-8">
-          {/* Left: Magazine Cover */}
-          <div className="lg:w-1/3">
-            <div className="relative rounded-2xl overflow-hidden shadow-xl aspect-[3/4] bg-[#001542] group">
-              <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800" alt="Cover" className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500" />
-              <div className="absolute bottom-10 left-0 w-full p-6 text-white">
-                <div className="bg-red-600 text-white text-xs font-bold px-3 py-1 rounded inline-block mb-3">Son Sayı</div>
-                <h3 className="text-3xl font-bold mb-2">VERİ ODAKLI MEKANİZMALAR</h3>
-                <p className="text-sm opacity-80">07. Sayı</p>
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-12 items-start">
+          {/* Left: Latest Magazine Cover Card */}
+          <div className="bg-white rounded-2xl p-3 shadow-sm border border-gray-100 h-fit">
+            <div className="relative mb-4">
+              <img
+                src="/images/latest-cover.jpg"
+                alt="Son Sayı Kapak"
+                className="w-full aspect-[3/4] object-cover rounded-xl"
+                onError={(e) => {
+                  (e.target as any).src = 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800';
+                }}
+              />
+              {/* Vertical Label - Centered Vertically & Fitted Box */}
+              <div className="absolute top-1/2 left-0 -translate-y-1/2 bg-[#D80027] text-white text-lg font-bold py-6 px-4 rounded-r-2xl shadow-[4px_0_15px_rgba(216,0,39,0.4)] [writing-mode:vertical-rl] rotate-180 tracking-wide">
+                Son Sayı
               </div>
             </div>
-            <div className="mt-4 flex gap-4">
-              <Button className="flex-1 bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 shadow-sm">
-                <Download size={16} className="mr-2" /> İndir
-              </Button>
-              <Button className="flex-1 bg-[#273D80] text-white hover:bg-[#1f3066] shadow-sm">
+
+            <div className="flex items-center gap-3">
+              <button className="w-10 h-10 flex items-center justify-center rounded-full border border-slate-200 text-slate-500 hover:bg-slate-100 hover:text-slate-800 transition-all shrink-0 shadow-sm" title="İndir">
+                <Download size={18} />
+              </button>
+              <button className="flex-1 bg-[#1E2756] text-white h-10 rounded-full flex items-center justify-center gap-2 text-sm font-medium hover:bg-brand-primary transition-all shadow-md">
+                <Eye size={18} />
                 Görüntüle
-              </Button>
+              </button>
             </div>
           </div>
 
-          {/* Right: Article List */}
-          <div className="lg:w-2/3 flex flex-col gap-4">
-            {[1, 2, 3, 4].map((item) => (
-              <ArticleCard
-                key={item}
-                category="Bilim"
-                articleType="Araştırma Makalesi"
-                title="Türkiye'nin Teknoloji Politikaları ve Döngüsel Ekonomi"
-                pageRange="12-28"
-                authors={["Elif Başkaya Acar", "Emre Torun", "Halil Başar"]}
-              />
-            ))}
+          {/* Right: Title group & Article List */}
+          <div className="flex flex-col">
+            <div className="flex justify-between items-end mb-6">
+              <div className="flex flex-col gap-1">
+                <span className="text-slate-500 font-medium text-xs md:text-sm">Profuture Teknoloji Dergisi</span>
+                <h2 className="text-3xl md:text-3xl font-bold text-[#D80027]">Güncel Yazılar</h2>
+              </div>
+              <button className="border border-gray-300 rounded-full px-5 py-2 text-xs md:text-sm font-medium text-slate-600 hover:bg-gray-50 transition-all">
+                Tümünü Görüntüle
+              </button>
+            </div>
+
+            <div className="flex flex-col">
+              {[1, 2, 3, 4].map((item) => (
+                <ArticleCard
+                  key={item}
+                  category="İklim"
+                  articleType="Araştırma Makalesi"
+                  title="Türkiye'nin Teknoloji Politikaları ve Döngüsel Ekonomi"
+                  pageRange="12-28"
+                  authors={["Elif Başkaya Acar", "Emre Taran", "Halil Başar"]}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
+      <Footer />
     </main>
   );
 }

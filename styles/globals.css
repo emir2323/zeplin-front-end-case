@@ -6,16 +6,23 @@
 }
 
 @theme {
-  /* Colors */
-  --color-primary: #273D80;
-  --color-primary-dark: #001542;
-  --color-secondary: #D93D75;
-  --color-gray-scale: #676A73;
+  /* Style Guide Colors */
+  --color-brand-primary: #0F172A;
+  --color-brand-red: #D80027;
+  --color-brand-cyan: #00C4CC;
+  --color-brand-text-dark: #1E293B;
+  --color-brand-text-light: #64748B;
+  --color-brand-badge-blue: #1E2756;
+
+  /* Legacy & Semantic Mapping */
+  --color-primary: var(--color-brand-primary);
+  --color-secondary: var(--color-brand-red);
+  --color-info: var(--color-brand-cyan);
+  --color-gray-scale: var(--color-brand-text-light);
+  --color-dark: var(--color-brand-text-dark);
   --color-stroke: #ACB1C6;
-  --color-success: #A5E05E;
+  --color-success: #A8B95E;
   --color-warning: #DE8536;
-  --color-dark: #242C31;
-  --color-info: #00C5DD;
   --color-light: #FBF6E3;
   --color-sky-light: #CEECFF;
 
@@ -35,6 +42,21 @@
   --text-h6: 20px;
   --text-h6--line-height: 26px;
 }
+
+/* Global Transitions and Base Button Styles */
+button,
+a {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-brand-red:hover {
+  background-color: #b91c1c !important;
+}
+
+.btn-brand-outline:hover {
+  background-color: #f9fafb !important;
+}
+
 
 /* Utilities for Heading Sizes (Tailwind v4 handles this differently, but we can define custom utils or map them) */
 @utility text-h1 {
@@ -84,4 +106,25 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
+}
+
+/* Tıklama sonrası oluşan mavi/gri çerçeveleri kaldır */
+*,
+*::before,
+*::after {
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Özellikle butonlar ve inputlar odaklandığında çıkan ring'i kaldır */
+button:focus,
+a:focus,
+input:focus,
+div:focus,
+section:focus,
+[role="button"]:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-focus-ring-color: transparent !important;
 }
